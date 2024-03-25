@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to the home page</h1>
+    <% if (locals.shortUrl) { %>
+        <p>URL Generated:localhost:3000/<%= shortUrl %></p>
+    <% } %>
+    <form method="post" action="/url">
+        <label for="">Enter The OrignalUrl</label>
+        <input type="text" name="originalUrl"  placeholder="https://example.com">
+        <button type="submit">Generate</button>
+    </form>
+    <% if (locals.urls) { %>
+        <% urls.forEach((item) => { %>
+            <p>Original URL: <%= item.originalUrl %></p>
+            <p>Short URL: <a href="">localhost:3000/<%= item.shortUrl %></a></p>
+            <p>Clicks: <%= item.visitedHistory.length %></p>
+        <% }) %>
+     
+    <% } %>
+    
+  
+</body>
+</html>

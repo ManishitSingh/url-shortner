@@ -9,8 +9,10 @@ async function handleCreateShortUrl(req, res) {
     shortUrl: shortID,
     originalUrl: req.body.originalUrl,
     visitedHistory: [{ timestamp:{type:Number}}],
+    createdBy: req.user._id,
   });
-  res.status(201).json({ shortUrl: shortID });
+  res.status(201).render('home',{shortUrl:shortID});
+  // res.status(201).json({ shortUrl: shortID }); 
 }
 
 async function handleGetAnalytics(req,res){
